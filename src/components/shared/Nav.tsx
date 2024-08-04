@@ -8,13 +8,22 @@ type NavProps = {
 
 export default function Nav({ size }: NavProps) {
   return (
-    <nav className={cn({ "hidden md:block": size === "desktop-only" })}>
-      <ul className="flex">
+    <nav
+      className={cn({
+        "hidden md:block": size === "desktop-only",
+      })}
+    >
+      <ul className="flex flex-col sm:flex-row">
         {navLinks.map((link) => (
-          <li key={link.name} className="text-bold uppercase text-white">
+          <li
+            key={link.name}
+            className="group py-2 text-center font-bold uppercase text-white"
+          >
             <Link
               href={link.href}
-              className="px-4 py-8 transition-all hover:text-primary focus:text-primary"
+              className={cn(
+                "block py-2 transition-all hover:text-primary focus:text-primary group-first:pl-0 sm:px-4 sm:py-8",
+              )}
             >
               {link.name}
             </Link>

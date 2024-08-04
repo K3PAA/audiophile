@@ -3,6 +3,7 @@ import { Manrope as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/shared/Header";
+import Footer from "@/components/shared/Footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -12,7 +13,7 @@ const fontSans = FontSans({
 export const metadata: Metadata = {
   title: "Audiophile",
   description:
-    "Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.",
+    "Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week.",
 };
 
 export default function RootLayout({
@@ -24,12 +25,13 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "flex min-h-dvh flex-col bg-background font-sans antialiased",
           fontSans.variable,
         )}
       >
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
