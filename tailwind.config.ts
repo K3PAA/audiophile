@@ -1,4 +1,3 @@
-const { fontFamily } = require('tailwindcss/defaultTheme')
 import type { Config } from 'tailwindcss'
 
 const config = {
@@ -19,10 +18,6 @@ const config = {
       },
     },
     extend: {
-      fontFamily: {
-        sans: ['var(--font-sans)', ...fontFamily.sans],
-      },
-
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -31,10 +26,12 @@ const config = {
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
+          light: 'hsl(var(--primary-light))',
           foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
+          hover: 'hsl(var(--secondary-hover))',
           foreground: 'hsl(var(--secondary-foreground))',
         },
         destructive: {
@@ -57,6 +54,8 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        white: 'hsl(var(--white))',
+        black: 'hsl(var(--black))',
       },
       borderRadius: {
         lg: 'var(--radius)',
