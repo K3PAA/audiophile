@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Header() {
   return (
     <header className="bg-black">
-      <section className="container flex items-center justify-between py-8 sm:justify-start sm:gap-10 md:justify-between md:gap-0">
+      <section className="container flex items-center justify-between py-8 sm:justify-start sm:gap-10 md:justify-between md:gap-0 md:py-0">
         <Button size="icon" variant="ghost" className="md:hidden">
           <Image
             src="/shared/tablet/icon-hamburger.svg"

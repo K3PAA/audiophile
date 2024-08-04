@@ -22,7 +22,7 @@ export default function Nav({ size }: NavProps) {
             <Link
               href={link.href}
               className={cn(
-                "block py-2 transition-all hover:text-primary focus:text-primary group-first:pl-0 sm:px-4 sm:py-8",
+                "block py-2 transition-all hover:text-primary focus:text-primary group-first:pl-0 sm:px-4 sm:py-8 md:group-first:pl-4",
               )}
             >
               {link.name}

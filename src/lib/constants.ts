@@ -1,6 +1,6 @@
 export const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Headphones", href: "/browse/headphones" },
-  { name: "Speakers", href: "/browse/speakers" },
-  { name: "Earphones", href: "/browse/earphones" },
+  { name: "Headphones", href: "/headphones" },
+  { name: "Speakers", href: "/speakers" },
+  { name: "Earphones", href: "/earphones" },
 ];
