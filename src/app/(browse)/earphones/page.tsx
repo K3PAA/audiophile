@@ -1,27 +1,23 @@
 import BrowseTitle from "@/components/browse/BrowseTitle";
 import ProductCard from "@/components/browse/ProductCard";
 import ProductContainer from "@/components/browse/ProductContainer";
+import { data } from "../../../../public/data";
 
 export default function page() {
   return (
     <>
       <BrowseTitle text="Earphones" />
       <ProductContainer>
-        <ProductCard
-          image={{
-            position: "left",
-            folder: "product-yx1-earphones",
-            nameWithExtension: "image-category-page-preview.jpg",
-          }}
-          description={{
-            isNew: true,
-            title: {
-              model: "YX1 WIRELESS",
-              type: "earphones",
-            },
-            text: "Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.",
-          }}
-        />
+        {data.products.earphones.map((product, i) => (
+          <ProductCard
+            key={product.description.title.model}
+            image={{
+              ...product.image,
+              position: i % 2 === 0 ? "left" : "right",
+            }}
+            description={product.description}
+          />
+        ))}
       </ProductContainer>
     </>
   );

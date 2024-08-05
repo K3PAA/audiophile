@@ -1,22 +1,12 @@
 import { cn } from "@/lib/utils";
 import ResponsiveImages from "../shared/ResponsiveImages";
 import { Button } from "../ui/button";
+import Link from "next/link";
+import { ProductType } from "@/lib/types";
 
-type DeviceType = "headphones" | "earphones" | "speaker";
-
-type ProductCardProps = {
+type ProductCardProps = ProductType & {
   image: {
     position: "left" | "right";
-    folder: string;
-    nameWithExtension: string;
-  };
-  description: {
-    isNew: boolean;
-    title: {
-      model: string;
-      type: DeviceType;
-    };
-    text: string;
   };
 };
 
@@ -24,6 +14,7 @@ export default function ProductCard({ image, description }: ProductCardProps) {
   return (
     <section
       className={cn("grid gap-8 sm:gap-12 md:grid-cols-2 md:gap-8 lg:gap-20")}
+      id={description.title.model.split(" ").join("")}
     >
       <ResponsiveImages
         folder={image.folder}
@@ -32,22 +23,20 @@ export default function ProductCard({ image, description }: ProductCardProps) {
 
       <ProductCardDescription
         position={image.position}
-        isNew={description.isNew}
-        title={description.title}
-        text={description.text}
+        description={description}
       />
     </section>
   );
 }
 
-type ProductCardDescriptionProps = ProductCardProps["description"] & {
+type ProductCardDescriptionProps = {
+  description: ProductCardProps["description"];
+} & {
   position?: "left" | "right";
 };
 
 function ProductCardDescription({
-  isNew,
-  title,
-  text,
+  description: { isNew, title, text },
   position,
 }: ProductCardDescriptionProps) {
   return (
@@ -68,7 +57,11 @@ function ProductCardDescription({
         {title.model} <span className="block">{title.type}</span>
       </h1>
       <p className="mt-8 max-w-[60ch] text-black/50">{text}</p>
-      <Button className="mt-10 uppercase">See product</Button>
+      <Button className="mt-10 uppercase" asChild>
+        <Link href={`/detail/${title.model.split(" ").join("-")}`}>
+          See product
+        </Link>
+      </Button>
     </div>
   );
 }

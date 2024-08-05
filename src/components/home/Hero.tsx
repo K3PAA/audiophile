@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -14,8 +14,11 @@ export default function Hero() {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
-          <Button className="mt-4 self-center rounded-none uppercase lg:self-start">
-            see product
+          <Button
+            className="mt-4 self-center rounded-none uppercase lg:self-start"
+            asChild
+          >
+            <Link href="/headphones#XX99MarkII">see product</Link>
           </Button>
         </div>
       </section>

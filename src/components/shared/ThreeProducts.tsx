@@ -30,7 +30,7 @@ type ProductCardProps = {
 function ProductCard({ src, text }: ProductCardProps) {
   return (
     <Link
-      href={`/${text.toLowerCase()}`}
+      href={`/${text.toLowerCase()}#${text.toLowerCase()}`}
       className="group mx-auto w-full max-w-[400px] rounded-[0.5rem] bg-card transition hover:-translate-y-[0.5rem] focus:-translate-y-[0.5rem] md:max-w-full"
     >
       <div className="flex -translate-y-1/4 flex-col items-center">
