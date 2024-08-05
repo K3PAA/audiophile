@@ -12,7 +12,7 @@ export default function ThreeColSection({
   return (
     <section
       className={cn(
-        "grid grid-cols-1 gap-14 md:grid-cols-3 md:gap-3 lg:gap-8",
+        "sm:gap-18 grid grid-cols-1 gap-14 md:grid-cols-3 md:gap-3 lg:gap-8",
         className,
       )}
     >
