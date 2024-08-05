@@ -188,7 +188,7 @@ const earphonesData: ProductType[] = [
 export const data = {
   products: {
     headphones: headphonesData,
-    speaker: speakerData,
+    speakers: speakerData,
     earphones: earphonesData,
   },
 };

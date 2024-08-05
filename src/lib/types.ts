@@ -1,6 +1,6 @@
 import { data } from "@/../public/data.js";
 
-export type DeviceType = keyof typeof data.products;
+export type CategoryType = keyof typeof data.products;
 
 export type ProductBase = {
   image: {
@@ -11,7 +11,7 @@ export type ProductBase = {
     isNew: boolean;
     title: {
       model: string;
-      type: DeviceType;
+      type: "headphones" | "speaker" | "earphones";
     };
     text: string;
   };
