@@ -2,7 +2,7 @@ import { data } from "@/../public/data.js";
 
 export type DeviceType = keyof typeof data.products;
 
-export type ProductType = {
+export type ProductBase = {
   image: {
     folder: string;
     nameWithExtension: string;
@@ -15,4 +15,15 @@ export type ProductType = {
     };
     text: string;
   };
+};
+
+export type ProductAdditional = {
+  price: number;
+  features: [string, string];
+  inBox: { item: string; amount: number }[];
+};
+
+export type ProductType = {
+  base: ProductBase;
+  additional: ProductAdditional;
 };

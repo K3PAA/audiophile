@@ -2,9 +2,9 @@ import { cn } from "@/lib/utils";
 import ResponsiveImages from "../shared/ResponsiveImages";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { ProductType } from "@/lib/types";
+import { ProductBase } from "@/lib/types";
 
-type ProductCardProps = ProductType & {
+type ProductCardProps = ProductBase & {
   image: {
     position: "left" | "right";
   };

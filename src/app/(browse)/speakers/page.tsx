@@ -11,12 +11,12 @@ export default function page() {
       <ProductContainer>
         {data.products.speaker.map((product, i) => (
           <ProductCard
-            key={product.description.title.model}
+            key={product.base.description.title.model}
             image={{
-              ...product.image,
+              ...product.base.image,
               position: i % 2 === 0 ? "left" : "right",
             }}
-            description={product.description}
+            description={product.base.description}
           />
         ))}
       </ProductContainer>
