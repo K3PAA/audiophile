@@ -8,7 +8,7 @@ export default function TopProducts() {
   return (
     <section className="container mb-[7.5rem] grid gap-6 sm:mb-24 sm:gap-8 md:mb-[12.5rem] md:gap-12">
       <section className="relative grid overflow-hidden rounded-md bg-primary py-16 sm:grid-cols-2 sm:gap-20 sm:px-2 sm:py-6 md:p-16 lg:gap-40 lg:px-[7.5rem] lg:py-20">
-        <div className="relative z-[100] mx-auto w-[240px] sm:mx-0 sm:w-full sm:translate-y-24">
+        <div className="relative z-[10] mx-auto w-[240px] sm:mx-0 sm:w-full sm:translate-y-24">
           <ResponsiveImages
             folder="home"
             nameWithExtension="image-speaker-zx9.png"

@@ -10,7 +10,7 @@ export default function Nav({ size }: NavProps) {
   return (
     <nav
       className={cn({
-        "hidden md:block": size === "desktop-only",
+        "hidden lg:block": size === "desktop-only",
       })}
     >
       <ul className="flex flex-col sm:flex-row">
@@ -22,7 +22,7 @@ export default function Nav({ size }: NavProps) {
             <Link
               href={link.href}
               className={cn(
-                "block py-2 transition-all hover:text-primary focus:text-primary group-first:pl-0 sm:px-4 sm:py-8 md:group-first:pl-4",
+                "block py-2 transition-all hover:text-primary focus:text-primary group-first:pl-0 sm:px-4 sm:py-8 lg:group-first:pl-4",
               )}
             >
               {link.name}

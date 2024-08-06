@@ -11,8 +11,6 @@ type SuggestionsProps = {
 };
 
 export default function Suggestions({ product, category }: SuggestionsProps) {
-  console.log(product.description.title.model);
-
   const suggestions = data.products[category].filter(
     (p) => p.description.title.model !== product.description.title.model,
   );
@@ -28,7 +26,6 @@ export default function Suggestions({ product, category }: SuggestionsProps) {
   }
 
   const threeItemsArray = suggestions.slice(0, 3);
-  console.log(threeItemsArray);
 
   return (
     <section className="container mb-40">
