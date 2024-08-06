@@ -27,6 +27,7 @@ export default function page({ params }: CategoryParams) {
       <ProductContainer>
         {categoryData.map((product, i) => (
           <ProductCard
+            category={category as CategoryType}
             key={product.base.description.title.model}
             image={{
               ...product.base.image,

@@ -2,15 +2,20 @@ import { cn } from "@/lib/utils";
 import ResponsiveImages from "../shared/ResponsiveImages";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { ProductBase } from "@/lib/types";
+import { CategoryType, ProductBase } from "@/lib/types";
 
 type ProductCardProps = ProductBase & {
   image: {
     position: "left" | "right";
   };
+  category: CategoryType;
 };
 
-export default function ProductCard({ image, description }: ProductCardProps) {
+export default function ProductCard({
+  image,
+  description,
+  category,
+}: ProductCardProps) {
   return (
     <section
       className={cn("grid gap-8 sm:gap-12 md:grid-cols-2 md:gap-8 lg:gap-20")}
@@ -22,6 +27,7 @@ export default function ProductCard({ image, description }: ProductCardProps) {
       />
 
       <ProductCardDescription
+        category={category}
         position={image.position}
         description={description}
       />
@@ -31,11 +37,12 @@ export default function ProductCard({ image, description }: ProductCardProps) {
 
 type ProductCardDescriptionProps = {
   description: ProductCardProps["description"];
-} & {
-  position?: "left" | "right";
+  category: CategoryType;
+  position: "left" | "right";
 };
 
 function ProductCardDescription({
+  category,
   description: { isNew, title, text },
   position,
 }: ProductCardDescriptionProps) {
@@ -58,7 +65,7 @@ function ProductCardDescription({
       </h1>
       <p className="mt-8 max-w-[60ch] text-black/50">{text}</p>
       <Button className="mt-10 uppercase" asChild>
-        <Link href={`/detail/${title.model.split(" ").join("-")}`}>
+        <Link href={`/${category}/${title.model.split(" ").join("-")}`}>
           See product
         </Link>
       </Button>
