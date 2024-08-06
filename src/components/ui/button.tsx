@@ -16,7 +16,7 @@ const buttonVariants = cva(
         outline:
           "text-black/50 hover:text-primary focus:text-primary uppercase",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+          "rounded-none border-2 border-black uppercase text-black hover:bg-black hover:text-white focus:bg-black focus:text-white",
 
         ghost: "",
         link: "text-primary underline-offset-4 hover:underline",
