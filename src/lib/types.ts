@@ -18,6 +18,7 @@ export type ProductAdditional = {
   price: number;
   features: [string, string];
   inBox: { item: string; amount: number }[];
+  category: CategoryType;
 };
 
 export type ProductType = ProductBase & {

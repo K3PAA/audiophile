@@ -4,6 +4,9 @@ import { redirect } from "next/navigation";
 import { CategoryType } from "@/lib/types";
 import Link from "next/link";
 import ProductDisplay from "@/components/product/ProductDisplay";
+import Gallery from "@/components/product/Gallery";
+import AdditionalInfo from "@/components/product/AdditionalInfo";
+import Suggestions from "@/components/product/Suggestions";
 
 type ProductParams = {
   params: { productName: string; category: string };
@@ -34,6 +37,12 @@ export default function page({ params }: ProductParams) {
       </div>
 
       <ProductDisplay product={product} />
+
+      <AdditionalInfo additional={product.additional} />
+
+      <Gallery folder={product.folder} />
+
+      <Suggestions product={product} category={category as CategoryType} />
 
       <ThreeProducts />
     </>

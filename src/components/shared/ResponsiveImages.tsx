@@ -13,26 +13,26 @@ export default function ResponsiveImages({
     <>
       <Image
         src={`/${folder}/desktop/${nameWithExtension}`}
-        alt="XX99 Mark II Headphones"
+        alt={nameWithExtension}
         width={540}
         height={560}
-        className="hidden rounded-[0.5rem] md:block"
+        className="hidden h-full w-full rounded-[0.5rem] md:block"
       />
 
       <Image
         src={`/${folder}/tablet/${nameWithExtension}`}
-        alt="XX99 Mark II Headphones"
+        alt={nameWithExtension}
         width={689}
         height={352}
-        className="hidden w-full rounded-[0.5rem] sm:block md:hidden"
+        className="hidden h-full w-full rounded-[0.5rem] sm:block md:hidden"
       />
 
       <Image
         src={`/${folder}/mobile/${nameWithExtension}`}
-        alt="XX99 Mark II Headphones"
+        alt={nameWithExtension}
         width={327}
         height={352}
-        className="block w-full rounded-[0.5rem] sm:hidden"
+        className="block h-full w-full rounded-[0.5rem] sm:hidden"
       />
     </>
   );

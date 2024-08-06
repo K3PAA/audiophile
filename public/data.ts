@@ -25,6 +25,7 @@ const headphonesData: ProductType[] = [
         { item: "3.5mm 5m Audio Cable", amount: 1 },
         { item: "Travel Bag", amount: 1 },
       ],
+      category: "headphones",
     },
   },
   {
@@ -50,6 +51,7 @@ const headphonesData: ProductType[] = [
         { item: "User Manual", amount: 1 },
         { item: "3.5mm 5m Audio Cable", amount: 1 },
       ],
+      category: "headphones",
     },
   },
   {
@@ -74,6 +76,7 @@ const headphonesData: ProductType[] = [
         { item: "User Manual", amount: 1 },
         { item: "3.5mm 5m Audio Cable", amount: 1 },
       ],
+      category: "headphones",
     },
   },
 ];
@@ -101,6 +104,7 @@ const speakerData: ProductType[] = [
         { item: "3.5mm 10m Audio Cable", amount: 1 },
         { item: "10m Optical Cable", amount: 1 },
       ],
+      category: "speakers",
     },
   },
   {
@@ -126,6 +130,7 @@ const speakerData: ProductType[] = [
         { item: "3.5mm 7.5m Audio Cable", amount: 1 },
         { item: "7.5m Optical Cable", amount: 1 },
       ],
+      category: "speakers",
     },
   },
 ];
@@ -154,6 +159,7 @@ const earphonesData: ProductType[] = [
         { item: "USB-C Charging Cable", amount: 1 },
         { item: "Travel Pouch", amount: 1 },
       ],
+      category: "earphones",
     },
   },
 ];
