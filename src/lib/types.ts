@@ -3,10 +3,7 @@ import { data } from "@/../public/data.js";
 export type CategoryType = keyof typeof data.products;
 
 export type ProductBase = {
-  image: {
-    folder: string;
-    nameWithExtension: string;
-  };
+  folder: string;
   description: {
     isNew: boolean;
     title: {
@@ -23,7 +20,6 @@ export type ProductAdditional = {
   inBox: { item: string; amount: number }[];
 };
 
-export type ProductType = {
-  base: ProductBase;
+export type ProductType = ProductBase & {
   additional: ProductAdditional;
 };

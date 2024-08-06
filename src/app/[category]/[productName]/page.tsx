@@ -17,7 +17,7 @@ export default function page({ params }: ProductParams) {
   }
 
   const product = data.products[category as CategoryType].find((p) => {
-    const pName = p.base.description.title.model.split(" ").join("-");
+    const pName = p.description.title.model.split(" ").join("-");
     return pName === productName;
   });
 

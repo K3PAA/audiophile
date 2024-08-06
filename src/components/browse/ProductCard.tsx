@@ -5,14 +5,13 @@ import Link from "next/link";
 import { CategoryType, ProductBase } from "@/lib/types";
 
 type ProductCardProps = ProductBase & {
-  image: {
-    position: "left" | "right";
-  };
   category: CategoryType;
+  position: "left" | "right";
 };
 
 export default function ProductCard({
-  image,
+  folder,
+  position,
   description,
   category,
 }: ProductCardProps) {
@@ -22,13 +21,13 @@ export default function ProductCard({
       id={description.title.model.split(" ").join("")}
     >
       <ResponsiveImages
-        folder={image.folder}
-        nameWithExtension={image.nameWithExtension}
+        folder={folder}
+        nameWithExtension="image-category-page-preview.jpg"
       />
 
       <ProductCardDescription
         category={category}
-        position={image.position}
+        position={position}
         description={description}
       />
     </section>
