@@ -6,6 +6,7 @@ import { CategoryType } from "@/lib/types";
 import { redirect } from "next/navigation";
 import { capitalize } from "@/lib/utils";
 import ThreeProducts from "@/components/shared/ThreeProducts";
+import OutroSection from "@/components/shared/OutroSection";
 
 type CategoryParams = {
   params: { category: string };
@@ -35,6 +36,7 @@ export default function page({ params }: CategoryParams) {
         ))}
       </ProductContainer>
       <ThreeProducts />
+      <OutroSection />
     </>
   );
 }

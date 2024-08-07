@@ -7,6 +7,7 @@ import ProductDisplay from "@/components/product/ProductDisplay";
 import Gallery from "@/components/product/Gallery";
 import AdditionalInfo from "@/components/product/AdditionalInfo";
 import Suggestions from "@/components/product/Suggestions";
+import OutroSection from "@/components/shared/OutroSection";
 
 type ProductParams = {
   params: { productId: string; category: string };
@@ -48,6 +49,7 @@ export default function page({ params }: ProductParams) {
       <Suggestions product={product} category={category as CategoryType} />
 
       <ThreeProducts />
+      <OutroSection />
     </>
   );
 }

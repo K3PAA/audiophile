@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
-import CartPopup from "@/components/shared/CartPopup";
+import CartPopup from "@/components/shared/cart/CartPopup";
 import { useCartContext, useNavContext } from "@/lib/hooks";
 
 export default function CartButton() {

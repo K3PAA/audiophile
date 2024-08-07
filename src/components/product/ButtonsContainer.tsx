@@ -25,7 +25,7 @@ export default function ButtonsContainer({ product }: ButtonsContainerProps) {
     }
     return setStateAmount(Number(e.target.value));
   };
-  const resetStateAmount = () => setStateAmount(0);
+  const resetStateAmount = () => setStateAmount(1);
 
   return (
     <div className="mt-6 flex gap-4 lg:mt-12">
