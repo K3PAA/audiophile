@@ -3,6 +3,7 @@ import { data } from "@/../public/data.js";
 export type CategoryType = keyof typeof data.products;
 
 export type ProductBase = {
+  id: string;
   folder: string;
   description: {
     isNew: boolean;

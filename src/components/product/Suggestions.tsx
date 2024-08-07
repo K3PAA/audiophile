@@ -12,15 +12,13 @@ type SuggestionsProps = {
 
 export default function Suggestions({ product, category }: SuggestionsProps) {
   const suggestions = data.products[category].filter(
-    (p) => p.description.title.model !== product.description.title.model,
+    (p) => p.id !== product.id,
   );
 
   if (suggestions.length < 3) {
     const additionalData = data.products[
       category !== "headphones" ? "headphones" : "speakers"
-    ].filter(
-      (p) => p.description.title.model !== product.description.title.model,
-    );
+    ].filter((p) => p.id !== product.id);
 
     suggestions.push(...additionalData);
   }
@@ -35,10 +33,7 @@ export default function Suggestions({ product, category }: SuggestionsProps) {
 
       <div className="mt-16 grid gap-8 sm:grid-cols-3 lg:gap-12">
         {threeItemsArray.map((product) => (
-          <SuggestionCard
-            key={product.description.title.model}
-            product={product}
-          />
+          <SuggestionCard key={product.id} product={product} />
         ))}
       </div>
     </section>
@@ -48,7 +43,7 @@ export default function Suggestions({ product, category }: SuggestionsProps) {
 function SuggestionCard({ product }: { product: ProductType }) {
   return (
     <Link
-      href={`/${product.additional.category}/${product.description.title.model.split(" ").join("-")}`}
+      href={`/${product.additional.category}/${product.id}`}
       className="mx-auto flex w-full max-w-[300px] flex-col items-center gap-8 transition-all duration-300 hover:scale-[1.03] sm:mx-0 sm:max-w-full"
     >
       <ResponsiveImages

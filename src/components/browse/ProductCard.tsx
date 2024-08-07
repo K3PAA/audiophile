@@ -2,49 +2,47 @@ import { cn } from "@/lib/utils";
 import ResponsiveImages from "../shared/ResponsiveImages";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { CategoryType, ProductBase } from "@/lib/types";
+import { CategoryType, ProductType } from "@/lib/types";
 
-type ProductCardProps = ProductBase & {
+type ProductCardProps = {
+  product: ProductType;
   category: CategoryType;
   position: "left" | "right";
 };
 
 export default function ProductCard({
-  folder,
-  position,
-  description,
+  product,
   category,
+  position,
 }: ProductCardProps) {
   return (
     <section
       className={cn("grid gap-8 sm:gap-12 md:grid-cols-2 md:gap-8 lg:gap-20")}
-      id={description.title.model.split(" ").join("")}
+      id={product.id}
     >
       <ResponsiveImages
-        folder={folder}
+        folder={product.folder}
         nameWithExtension="image-category-page-preview.jpg"
       />
 
       <ProductCardDescription
         category={category}
         position={position}
-        description={description}
+        product={product}
       />
     </section>
   );
 }
 
-type ProductCardDescriptionProps = {
-  description: ProductCardProps["description"];
-  category: CategoryType;
-  position: "left" | "right";
-};
+type ProductCardDescriptionProps = ProductCardProps;
 
 function ProductCardDescription({
   category,
-  description: { isNew, title, text },
+  product,
   position,
 }: ProductCardDescriptionProps) {
+  const { isNew, title, text } = product.description;
+
   return (
     <div
       className={cn(
@@ -64,9 +62,7 @@ function ProductCardDescription({
       </h1>
       <p className="mt-8 max-w-[60ch] text-black/50">{text}</p>
       <Button className="mt-10 uppercase" asChild>
-        <Link href={`/${category}/${title.model.split(" ").join("-")}`}>
-          See product
-        </Link>
+        <Link href={`/${category}/${product.id}`}>See product</Link>
       </Button>
     </div>
   );

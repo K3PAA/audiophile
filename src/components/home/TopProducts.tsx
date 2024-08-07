@@ -36,7 +36,7 @@ export default function TopProducts() {
             className="mt-10 rounded-none bg-black text-white hover:border-[#4C4C4C] hover:bg-[#4C4C4C] focus:border-[#4C4C4C] focus:bg-[#4C4C4C]"
             asChild
           >
-            <Link href="/speakers#ZX9">See Product</Link>
+            <Link href="/speakers">See Product</Link>
           </Button>
         </div>
       </section>
@@ -51,7 +51,7 @@ export default function TopProducts() {
             ZX7 Speaker
           </h3>
           <Button variant="secondary" className="mt-8 rounded-none" asChild>
-            <Link href="/speakers#ZX7">See Product</Link>
+            <Link href="/speakers">See Product</Link>
           </Button>
         </div>
       </section>
@@ -71,7 +71,7 @@ export default function TopProducts() {
             className="mt-8 self-start rounded-none"
             asChild
           >
-            <Link href="/earphones#YX1">See Product</Link>
+            <Link href="/earphones">See Product</Link>
           </Button>
         </div>
       </section>

@@ -27,11 +27,10 @@ export default function page({ params }: CategoryParams) {
       <ProductContainer>
         {categoryData.map((product, i) => (
           <ProductCard
+            key={product.id}
+            product={product}
             category={category as CategoryType}
-            key={product.description.title.model}
-            folder={product.folder}
             position={i % 2 === 0 ? "left" : "right"}
-            description={product.description}
           />
         ))}
       </ProductContainer>

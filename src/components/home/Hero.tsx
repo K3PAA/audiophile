@@ -18,7 +18,7 @@ export default function Hero() {
             className="mt-4 self-center rounded-none uppercase lg:self-start"
             asChild
           >
-            <Link href="/headphones#XX99MarkII">see product</Link>
+            <Link href="/headphones">see product</Link>
           </Button>
         </div>
       </section>

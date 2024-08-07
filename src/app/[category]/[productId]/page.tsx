@@ -9,19 +9,18 @@ import AdditionalInfo from "@/components/product/AdditionalInfo";
 import Suggestions from "@/components/product/Suggestions";
 
 type ProductParams = {
-  params: { productName: string; category: string };
+  params: { productId: string; category: string };
 };
 
 export default function page({ params }: ProductParams) {
-  const { category, productName } = params;
+  const { category, productId } = params;
 
   if (!(category in data.products)) {
     redirect("/");
   }
 
   const product = data.products[category as CategoryType].find((p) => {
-    const pName = p.description.title.model.split(" ").join("-");
-    return pName === productName;
+    return productId === p.id;
   });
 
   if (!product) {
