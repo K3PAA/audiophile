@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import QuantityInput from "@/components/interactive/QuantityInput";
-import { useEffect } from "react";
+import { ChangeEvent, useEffect } from "react";
 import { useCartContext } from "@/lib/hooks";
 import { CartItemType } from "@/lib/types";
 
 export default function CartPopup() {
-  const { closeCart, cart } = useCartContext();
+  const { closeCart, removeAllCartItems, cart, cartTotal } = useCartContext();
 
   useEffect(() => {
     const handleMouseEvent = (e: MouseEvent) => {
@@ -35,6 +35,10 @@ export default function CartPopup() {
           <Button
             variant="ghost"
             className="h-10 capitalize text-black/50 underline decoration-black/20 underline-offset-4 hover:text-black hover:decoration-black focus:text-black focus:decoration-black"
+            onClick={(e) => {
+              removeAllCartItems();
+              e.stopPropagation();
+            }}
           >
             Remove all
           </Button>
@@ -50,9 +54,7 @@ export default function CartPopup() {
 
       <div className="mt-8 flex items-center justify-between">
         <p className="font-medium text-black/50">Total</p>
-        <p className="font-bold text-black">
-          $ {cart.reduce((acc, item) => acc + item.price, 0)}
-        </p>
+        <p className="font-bold text-black">$ {cartTotal}</p>
       </div>
 
       <Button className="mt-6 w-full rounded-none uppercase">Checkout</Button>
@@ -61,7 +63,12 @@ export default function CartPopup() {
 }
 
 function CartItem({ item }: { item: CartItemType }) {
-  console.log(item.src);
+  const {
+    decreaseCartAmount,
+    increaseCartAmount,
+    handleChangeCartAmountInput,
+  } = useCartContext();
+
   return (
     <div className="grid grid-cols-[4rem_1fr_6rem] items-center gap-4">
       <Image
@@ -75,7 +82,16 @@ function CartItem({ item }: { item: CartItemType }) {
         <p>{item.name}</p>
         <p className="text-black/50">$ {item.price}</p>
       </div>
-      <QuantityInput size="sm" />
+      <QuantityInput
+        cartInput={true}
+        id={item.id}
+        amount={item.amount}
+        handleInputChange={(e: ChangeEvent<HTMLInputElement>) =>
+          handleChangeCartAmountInput(item.id, Number(e.target.value))
+        }
+        decrease={() => decreaseCartAmount(item.id)}
+        increase={() => increaseCartAmount(item.id)}
+      />
     </div>
   );
 }

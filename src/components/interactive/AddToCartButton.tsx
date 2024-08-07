@@ -7,16 +7,26 @@ export default function AddToCartButton({
   src,
   name,
   price,
+  amount,
   id,
-}: Omit<CartItemType, "amount">) {
-  const { handleAddToCart, amount } = useCartContext();
+  handleClick,
+}: CartItemType & {
+  handleClick: () => void;
+}) {
+  const { handleAddToCart, cart } = useCartContext();
+
+  const alreadyInUse = Boolean(cart.find((p) => p.id === id));
 
   return (
     <Button
+      disabled={alreadyInUse}
       className="rounded-none uppercase"
-      onClick={() => handleAddToCart({ id, name, src, price, amount })}
+      onClick={() => {
+        handleAddToCart({ id, name, src, price, amount });
+        handleClick();
+      }}
     >
-      ADD TO CART
+      {alreadyInUse ? <>ITEM IN CARD</> : <>ADD TO CART</>}
     </Button>
   );
 }

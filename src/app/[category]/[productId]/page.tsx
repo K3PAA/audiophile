@@ -24,6 +24,10 @@ export default function page({ params }: ProductParams) {
   });
 
   if (!product) {
+    console.log(
+      productId,
+      data.products[category as CategoryType].map((p) => p.id),
+    );
     redirect("/");
   }
 

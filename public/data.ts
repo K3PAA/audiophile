@@ -1,9 +1,9 @@
 import { ProductType } from "@/lib/types";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 const headphonesData: ProductType[] = [
   {
-    id: uuidv4(),
+    id: "1",
     folder: "product-xx99-mark-two-headphones",
     description: {
       isNew: true,
@@ -31,7 +31,7 @@ const headphonesData: ProductType[] = [
     },
   },
   {
-    id: uuidv4(),
+    id: "2",
     folder: "product-xx99-mark-one-headphones",
     description: {
       isNew: false,
@@ -58,7 +58,7 @@ const headphonesData: ProductType[] = [
     },
   },
   {
-    id: uuidv4(),
+    id: "3",
     folder: "product-xx59-headphones",
     description: {
       isNew: false,
@@ -86,7 +86,7 @@ const headphonesData: ProductType[] = [
 ];
 const speakerData: ProductType[] = [
   {
-    id: uuidv4(),
+    id: "4",
     folder: "product-zx9-speaker",
     description: {
       isNew: true,
@@ -113,7 +113,7 @@ const speakerData: ProductType[] = [
     },
   },
   {
-    id: uuidv4(),
+    id: "5",
     folder: "product-zx7-speaker",
     description: {
       isNew: false,
@@ -142,7 +142,7 @@ const speakerData: ProductType[] = [
 ];
 const earphonesData: ProductType[] = [
   {
-    id: uuidv4(),
+    id: "6",
     folder: "product-yx1-earphones",
     description: {
       isNew: true,

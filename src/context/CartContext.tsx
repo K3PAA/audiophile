@@ -1,6 +1,6 @@
 "use client";
 import { CartItemType } from "@/lib/types";
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState, useEffect } from "react";
 
 type CartContextType = {
   isCartOpen: boolean;
@@ -8,12 +8,12 @@ type CartContextType = {
   closeCart: () => void;
 
   cart: CartItemType[];
+  cartTotal: number;
   handleAddToCart: (item: CartItemType) => void;
-
-  amount: number;
-  increaseAmount: () => void;
-  decreaseAmount: () => void;
-  handleInputAmountChange: (amount: number) => void;
+  increaseCartAmount: (id: string) => void;
+  decreaseCartAmount: (id: string) => void;
+  handleChangeCartAmountInput: (id: string, value: number) => void;
+  removeAllCartItems: () => void;
 };
 
 export const CartContext = createContext<CartContextType | null>(null);
@@ -21,7 +21,7 @@ export const CartContext = createContext<CartContextType | null>(null);
 function CartContextProvider({ children }: { children: ReactNode }) {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cart, setCart] = useState<CartItemType[]>([]);
-  const [amount, setAmount] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
 
   const toogleCart = () => {
     setIsCartOpen((p) => !p);
@@ -31,20 +31,52 @@ function CartContextProvider({ children }: { children: ReactNode }) {
     setIsCartOpen(false);
   };
 
-  const increaseAmount = () => {
-    setAmount((p) => p + 1);
-  };
-  const decreaseAmount = () => {
-    setAmount((p) => p - 1);
+  useEffect(() => {
+    setCartTotal(cart.reduce((acc, item) => acc + item.price * item.amount, 0));
+  }, [cart]);
+
+  const increaseCartAmount = (id: string) => {
+    setCart((p) => {
+      return p.map((item) => {
+        if (item.id === id) {
+          return { ...item, amount: item.amount + 1 };
+        }
+        return item;
+      });
+    });
   };
 
-  const handleInputAmountChange = (amount: number) => {
-    setAmount(amount);
+  const handleChangeCartAmountInput = (id: string, value: number) => {
+    setCart((p) => {
+      return p.map((item) => {
+        if (item.id === id) {
+          if (value < 1) return { ...item, amount: 1 };
+          return { ...item, amount: value };
+        }
+        return { ...item };
+      });
+    });
+  };
+
+  const decreaseCartAmount = (id: string) => {
+    setCart((p) => {
+      return p
+        .map((item) => {
+          if (item.id === id) {
+            return { ...item, amount: item.amount - 1 };
+          }
+          return { ...item };
+        })
+        .filter((item) => item.amount >= 1);
+    });
+  };
+
+  const removeAllCartItems = () => {
+    setCart([]);
   };
 
   const handleAddToCart = (item: CartItemType) => {
-    setCart((p) => [...p, item]);
-    setAmount(0);
+    setCart((p) => [...p, { ...item }]);
   };
 
   return (
@@ -52,13 +84,14 @@ function CartContextProvider({ children }: { children: ReactNode }) {
       value={{
         cart,
         isCartOpen,
-        amount,
+        cartTotal,
         toogleCart,
         closeCart,
-        handleInputAmountChange,
+        decreaseCartAmount,
+        increaseCartAmount,
+        handleChangeCartAmountInput,
+        removeAllCartItems,
         handleAddToCart,
-        increaseAmount,
-        decreaseAmount,
       }}
     >
       {children}

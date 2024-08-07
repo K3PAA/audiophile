@@ -1,6 +1,6 @@
 import { ProductType } from "@/lib/types";
-import QuantityInput from "../interactive/QuantityInput";
-import AddToCartButton from "../interactive/AddToCartButton";
+
+import ButtonsContainer from "./ButtonsContainer";
 
 type ProductMainContentProps = {
   product: ProductType;
@@ -30,15 +30,7 @@ export default function ProductMainContent({
       <p className="mt-4 text-xl tracking-widest text-black lg:mt-8">
         ${product.additional.price}
       </p>
-      <div className="mt-6 flex gap-4 lg:mt-12">
-        <QuantityInput id={product.id} />
-        <AddToCartButton
-          src={`/cart/image-${model.split(" ").join("-")}-${type}.jpg`.toLowerCase()}
-          name={model}
-          price={product.additional.price}
-          id={product.id}
-        />
-      </div>
+      <ButtonsContainer product={product} />
     </div>
   );
 }
