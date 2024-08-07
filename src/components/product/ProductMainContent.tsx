@@ -1,7 +1,6 @@
 import { ProductType } from "@/lib/types";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import QuantityInput from "../interactive/QuantityInput";
 
 type ProductMainContentProps = {
   product: ProductType;
@@ -28,28 +27,7 @@ export default function ProductMainContent({
         ${product.additional.price}
       </p>
       <div className="mt-6 flex gap-4 lg:mt-12">
-        <div className="flex">
-          <Label className="sr-only">Quantity</Label>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-0 h-full rounded-none bg-card hover:z-[1] hover:ring-2 hover:ring-ring/40 focus:z-[1] focus:ring-2 focus:ring-ring"
-          >
-            -
-          </Button>
-          <Input
-            type="number"
-            defaultValue={1}
-            className="number-input max-w-[100px] appearance-none rounded-none border-0 bg-card text-center hover:z-[1] hover:ring-2 hover:ring-ring/40 focus:z-[1] focus:ring-2 focus:ring-ring"
-          />
-          <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-0 h-full rounded-none bg-card hover:z-[1] hover:ring-2 hover:ring-ring/40 focus:z-[1] focus:ring-2 focus:ring-ring"
-          >
-            +
-          </Button>
-        </div>
+        <QuantityInput />
         <Button className="rounded-none uppercase">ADD TO CART</Button>
       </div>
     </div>

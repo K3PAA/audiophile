@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Header from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
 import OutroSection from "@/components/shared/OutroSection";
+import CartContextProvider from "@/context/CartContext";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -30,11 +31,13 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        <Header />
+        <CartContextProvider>
+          <Header />
 
-        {children}
-        <OutroSection />
-        <Footer />
+          {children}
+          <OutroSection />
+          <Footer />
+        </CartContextProvider>
       </body>
     </html>
   );
