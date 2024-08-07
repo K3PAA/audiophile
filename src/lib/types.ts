@@ -25,3 +25,11 @@ export type ProductAdditional = {
 export type ProductType = ProductBase & {
   additional: ProductAdditional;
 };
+
+export type CartItemType = {
+  id: string;
+  name: string;
+  src: string;
+  price: number;
+  amount: number;
+};

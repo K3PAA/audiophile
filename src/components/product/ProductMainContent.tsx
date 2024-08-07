@@ -1,6 +1,6 @@
 import { ProductType } from "@/lib/types";
-import { Button } from "@/components/ui/button";
 import QuantityInput from "../interactive/QuantityInput";
+import AddToCartButton from "../interactive/AddToCartButton";
 
 type ProductMainContentProps = {
   product: ProductType;
@@ -9,7 +9,11 @@ type ProductMainContentProps = {
 export default function ProductMainContent({
   product,
 }: ProductMainContentProps) {
-  const { isNew, title, text } = product.description;
+  const {
+    isNew,
+    title: { model, type },
+    text,
+  } = product.description;
 
   return (
     <div className="flex flex-col justify-center sm:col-span-3 md:col-span-1">
@@ -19,7 +23,7 @@ export default function ProductMainContent({
         </p>
       )}
       <h1 className="mt-4 text-3xl font-bold uppercase text-black md:text-4xl lg:text-5xl">
-        {title.model} <span className="block">{title.type}</span>
+        {model} <span className="block">{type}</span>
       </h1>
       <p className="mt-4 max-w-[60ch] text-black/50 lg:mt-8">{text}</p>
 
@@ -27,8 +31,13 @@ export default function ProductMainContent({
         ${product.additional.price}
       </p>
       <div className="mt-6 flex gap-4 lg:mt-12">
-        <QuantityInput />
-        <Button className="rounded-none uppercase">ADD TO CART</Button>
+        <QuantityInput id={product.id} />
+        <AddToCartButton
+          src={`/cart/image-${model.split(" ").join("-")}-${type}.jpg`.toLowerCase()}
+          name={model}
+          price={product.additional.price}
+          id={product.id}
+        />
       </div>
     </div>
   );
