@@ -1,4 +1,6 @@
 import { data } from "@/../public/data.js";
+import { checkoutFormSchema } from "@/lib/schema";
+import { z } from "zod";
 
 export type CategoryType = keyof typeof data.products;
 
@@ -36,15 +38,4 @@ export type CartItemType = {
 
 export type PaymentMethod = "cash-on-delivery" | "e-money";
 
-export type CheckoutFormValues = {
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  zip_code: string;
-  city: string;
-  country: string;
-  paymentMethod: PaymentMethod;
-  eMoneyNumber: string;
-  eMoneyPin: string;
-};
+export type CheckoutFormValues = z.infer<typeof checkoutFormSchema>;

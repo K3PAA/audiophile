@@ -5,17 +5,24 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 import Image from "next/image";
-import { Control, Controller, UseFormRegister } from "react-hook-form";
+import {
+  Control,
+  Controller,
+  FieldErrors,
+  UseFormRegister,
+} from "react-hook-form";
 import { CheckoutFormValues, PaymentMethod } from "@/lib/types";
 
 type CheckoutFormProps = {
   register: UseFormRegister<CheckoutFormValues>;
+  errors: FieldErrors<CheckoutFormValues>;
   control: Control<CheckoutFormValues, any>;
   paymentMethod: PaymentMethod;
 };
 
 export default function CheckoutForm({
   register,
+  errors,
   control,
   paymentMethod,
 }: CheckoutFormProps) {
@@ -33,17 +40,20 @@ export default function CheckoutForm({
             name="name"
             placeholder="Alexei Ward"
             register={register}
+            error={errors.name}
           />
           <InputWithLabel
             name="email"
             label="Email Address"
             placeholder="alexei@mail.com"
             register={register}
+            error={errors.email}
           />
           <InputWithLabel
             name="phone"
             placeholder="+1 202-555-0136"
             register={register}
+            error={errors.phone}
           />
         </div>
       </section>
@@ -59,6 +69,7 @@ export default function CheckoutForm({
               name="address"
               placeholder="1137 Williams Avenue"
               register={register}
+              error={errors.address}
             />
           </div>
           <InputWithLabel
@@ -66,16 +77,19 @@ export default function CheckoutForm({
             label="ZIP Code"
             placeholder="10001"
             register={register}
+            error={errors.zip_code}
           />
           <InputWithLabel
             name="city"
             placeholder="New York"
             register={register}
+            error={errors.city}
           />
           <InputWithLabel
             name="country"
             placeholder="United States"
             register={register}
+            error={errors.country}
           />
         </div>
       </section>

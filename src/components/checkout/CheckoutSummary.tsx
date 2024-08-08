@@ -5,9 +5,13 @@ import { Button } from "../ui/button";
 
 type CheckoutSummaryProps = {
   onOrderMade: () => void;
+  isValid: boolean;
 };
 
-export default function CheckoutSummary({ onOrderMade }: CheckoutSummaryProps) {
+export default function CheckoutSummary({
+  onOrderMade,
+  isValid,
+}: CheckoutSummaryProps) {
   const { cart, cartTotal } = useCartContext();
 
   return (
@@ -39,7 +43,13 @@ export default function CheckoutSummary({ onOrderMade }: CheckoutSummaryProps) {
         </p>
       </div>
 
-      <Button className="rounded-none" type="submit" onClick={onOrderMade}>
+      <Button
+        className="rounded-none"
+        type="submit"
+        onClick={() => {
+          if (isValid) onOrderMade();
+        }}
+      >
         Continue & Pay
       </Button>
     </section>
