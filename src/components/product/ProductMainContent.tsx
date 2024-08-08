@@ -28,7 +28,7 @@ export default function ProductMainContent({
       <p className="mt-4 max-w-[60ch] text-black/50 lg:mt-8">{text}</p>
 
       <p className="mt-4 text-xl tracking-widest text-black lg:mt-8">
-        ${product.additional.price}
+        ${product.additional.price.toLocaleString("en-US")}
       </p>
       <ButtonsContainer product={product} />
     </div>

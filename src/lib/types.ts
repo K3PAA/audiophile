@@ -33,3 +33,18 @@ export type CartItemType = {
   price: number;
   amount: number;
 };
+
+export type PaymentMethod = "cash-on-delivery" | "e-money";
+
+export type CheckoutFormValues = {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  zip_code: string;
+  city: string;
+  country: string;
+  paymentMethod: PaymentMethod;
+  eMoneyNumber: string;
+  eMoneyPin: string;
+};

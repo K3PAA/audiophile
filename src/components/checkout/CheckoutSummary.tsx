@@ -3,18 +3,22 @@ import CartItem from "@/components/shared/cart/CartItem";
 import { useCartContext } from "@/lib/hooks";
 import { Button } from "../ui/button";
 
-export default function CheckoutSummary() {
+type CheckoutSummaryProps = {
+  onOrderMade: () => void;
+};
+
+export default function CheckoutSummary({ onOrderMade }: CheckoutSummaryProps) {
   const { cart, cartTotal } = useCartContext();
 
   return (
     <section className="sticky top-4 grid gap-8 self-start rounded-md bg-white p-8 shadow-md md:p-4 lg:p-8">
       <h3 className="font-bold uppercase text-black">Summary</h3>
-      <div className="grid">
+      <div className="grid gap-3">
         {cart.map((item) => (
           <CartItem key={item.id} item={item} checkout={true} />
         ))}
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 font-medium">
         <p className="flex justify-between uppercase text-black/50">
           Total: <span className="font-bold text-black">$ {cartTotal}</span>
         </p>
@@ -35,7 +39,9 @@ export default function CheckoutSummary() {
         </p>
       </div>
 
-      <Button className="rounded-none">Continue & Pay</Button>
+      <Button className="rounded-none" type="submit" onClick={onOrderMade}>
+        Continue & Pay
+      </Button>
     </section>
   );
 }

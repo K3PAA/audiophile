@@ -33,7 +33,7 @@ export default function CartItem({
       />
       <div className="text-nowrap font-bold">
         <p>{item.name}</p>
-        <p className="text-black/50">$ {item.price}</p>
+        <p className="text-black/50">$ {item.price.toLocaleString("en-US")}</p>
       </div>
       {checkout ? (
         <p className="text-black/50"> x{item.amount}</p>

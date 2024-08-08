@@ -3,12 +3,24 @@ import InputWithLabel from "./InputWithLabel";
 
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
 
-export default function CheckoutForm() {
+import Image from "next/image";
+import { Control, Controller, UseFormRegister } from "react-hook-form";
+import { CheckoutFormValues, PaymentMethod } from "@/lib/types";
+
+type CheckoutFormProps = {
+  register: UseFormRegister<CheckoutFormValues>;
+  control: Control<CheckoutFormValues, any>;
+  paymentMethod: PaymentMethod;
+};
+
+export default function CheckoutForm({
+  register,
+  control,
+  paymentMethod,
+}: CheckoutFormProps) {
   return (
-    <form className="grid gap-10 rounded-[0.5rem] bg-white p-8 shadow-md md:p-4 lg:p-8">
+    <section className="grid gap-10 rounded-[0.5rem] bg-white p-8 shadow-md md:p-4 lg:p-8">
       <h1 className="text-3xl font-semibold uppercase">Checkout</h1>
 
       <section>
@@ -17,13 +29,22 @@ export default function CheckoutForm() {
         </p>
 
         <div className="grid gap-x-4 gap-y-6 sm:grid-cols-2">
-          <InputWithLabel name="name" placeholder="Alexei Ward" />
+          <InputWithLabel
+            name="name"
+            placeholder="Alexei Ward"
+            register={register}
+          />
           <InputWithLabel
             name="email"
             label="Email Address"
             placeholder="alexei@mail.com"
+            register={register}
           />
-          <InputWithLabel name="phone" placeholder="+1 202-555-0136" />
+          <InputWithLabel
+            name="phone"
+            placeholder="+1 202-555-0136"
+            register={register}
+          />
         </div>
       </section>
 
@@ -34,15 +55,28 @@ export default function CheckoutForm() {
 
         <div className="grid gap-x-4 gap-y-6 sm:grid-cols-2">
           <div className="sm:col-span-2">
-            <InputWithLabel name="address" placeholder="1137 Williams Avenue" />
+            <InputWithLabel
+              name="address"
+              placeholder="1137 Williams Avenue"
+              register={register}
+            />
           </div>
           <InputWithLabel
             name="zip_code"
             label="ZIP Code"
             placeholder="10001"
+            register={register}
           />
-          <InputWithLabel name="city" placeholder="New York" />
-          <InputWithLabel name="country" placeholder="United States" />
+          <InputWithLabel
+            name="city"
+            placeholder="New York"
+            register={register}
+          />
+          <InputWithLabel
+            name="country"
+            placeholder="United States"
+            register={register}
+          />
         </div>
       </section>
 
@@ -56,27 +90,42 @@ export default function CheckoutForm() {
             Payment Method
           </p>
 
-          <RadioGroup defaultValue="comfortable">
-            <RadioWrapper>
-              <RadioGroupItem value="default" id="r1" />
-              <Label htmlFor="r1" className="w-full cursor-pointer px-2 py-4">
-                e-Money
-              </Label>
-            </RadioWrapper>
-
-            <RadioWrapper>
-              <RadioGroupItem value="comfortable" id="r2" />
-              <Label htmlFor="r2" className="w-full cursor-pointer px-2 py-4">
-                Cash on Delivery
-              </Label>
-            </RadioWrapper>
-          </RadioGroup>
+          <Controller
+            name="paymentMethod"
+            control={control}
+            render={({ field }) => (
+              <RadioGroup
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+                className="flex flex-col space-y-1"
+              >
+                <RadioWrapper>
+                  <RadioGroupItem value="e-money" id="r1" />
+                  <Label
+                    htmlFor="r1"
+                    className="w-full cursor-pointer px-2 py-4"
+                  >
+                    e-Money
+                  </Label>
+                </RadioWrapper>
+                <RadioWrapper>
+                  <RadioGroupItem value="cash-on-delivery" id="r2" />
+                  <Label
+                    htmlFor="r2"
+                    className="w-full cursor-pointer px-2 py-4"
+                  >
+                    Cash on Delivery
+                  </Label>
+                </RadioWrapper>
+              </RadioGroup>
+            )}
+          />
         </div>
 
-        <CashOnDelivery />
-        {/* <EMoney /> */}
+        {paymentMethod === "cash-on-delivery" && <CashOnDelivery />}
+        {paymentMethod === "e-money" && <EMoney register={register} />}
       </section>
-    </form>
+    </section>
   );
 }
 
@@ -106,16 +155,22 @@ function CashOnDelivery() {
   );
 }
 
-function EMoney() {
+type EMoneyProps = {
+  register: UseFormRegister<CheckoutFormValues>;
+};
+
+function EMoney({ register }: EMoneyProps) {
   return (
     <div className="mt-6 grid gap-x-4 gap-y-6 sm:grid-cols-2">
       <InputWithLabel
-        name="e_money_number"
+        register={register}
+        name="eMoneyNumber"
         label="e-Money Number"
         placeholder="238521993"
       />
       <InputWithLabel
-        name="e_money_PIN"
+        register={register}
+        name="eMoneyPin"
         label="e-Money PIN"
         placeholder="6891"
       />
