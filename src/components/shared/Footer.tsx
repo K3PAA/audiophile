@@ -22,9 +22,9 @@ export default function Footer() {
           <div>
             <p className="mx-auto mt-12 max-w-[40ch] text-center text-white/50 sm:mt-0 sm:max-w-full sm:text-left">
               Audiophile is an all in one stop to fulfill your audio needs.
-              We're a small team of music lovers and sound specialists who are
-              devoted to helping you get the most out of personal audio. Come
-              and visit our demo facility - we’re open 7 days a week.
+              We&apos;re a small team of music lovers and sound specialists who
+              are devoted to helping you get the most out of personal audio.
+              Come and visit our demo facility - we&apos;re open 7 days a week.
             </p>
 
             <div className="mt-12 flex flex-col items-center justify-center gap-12 sm:flex-row sm:justify-between md:mt-12">
